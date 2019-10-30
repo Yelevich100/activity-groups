@@ -1,0 +1,67 @@
+tr,
+td {
+    border: 2px solid black;
+    border-style: double;
+    border-spacing: 0ch;
+    background-color: rgb(107, 170, 241);
+    align-content: center;
+
+}
+
+#submitBtn {
+    border: 1px solid black;
+    background-color: rgb(230, 137, 17);
+    width: 10pc;
+    padding: 2%;
+    font-style: italic;
+    caption-side: bottom;
+
+
+}
+
+
+tr:hover {
+    background-color: rgb(213, 227, 243);
+}
+
+
+.mybody {
+
+
+    background-color: rgb(125, 165, 224);
+    text-align: center;
+    align-content: center;
+
+    font-style: italic;
+    caption-side: bottom;
+
+
+}
+
+/* table {
+    width: 100%;
+
+    border: 4px double black;
+
+} */
+
+table {
+    table-layout: fixed;
+    width: 60%;
+    border-collapse: collapse;
+    border: 3px solid black;
+    font-family: 'Rock Salt', cursive;
+    padding: 20px;
+    font-style: italic;
+    caption-side: bottom;
+    color: #666;
+    letter-spacing: 1px;
+}
+}
+
+
+th,
+td {
+    padding: 2%;
+
+}
