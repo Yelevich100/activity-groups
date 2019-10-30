@@ -3,20 +3,18 @@
 
 <head>
     <title>Login</title>
-    <style>
-        .pageHeader {
-            background-color: lightgray;
-            border-bottom: 2px dashed black;
-        }
-    </style>
+
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <header class="pageHeader">
+    <!-- <header class="pageHeader">
         <h2>User Login</h2>
     </header>
+
     <form id="myForm">
         <table>
             <tr>
@@ -34,8 +32,39 @@
             </tr>
 
         </table>
-    </form>
+    </form> -->
+    <br>
+    <br>
+    <br>
+    <center>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
 
+                </div>
+
+                <div class="col-md-6 main">
+
+                    <form action="/registration/login">
+
+                        <h1> User Login </h1>
+
+                        <input class="box" type="email" name="userName" id="userName" required /><br>
+
+                        <input class="box" type="password" name="password" id="password" required /><br>
+                        <br>
+                        <input type="submit" id="submitDetails" name="submitDetails" value="Submit" /><br>
+
+                    </form>
+
+                </div>
+
+                <div class="col-md-3">
+                </div>
+
+            </div>
+        </div>
+    </center>
     <script>
         // listen to click event of the submit button
         $('#submitBtn').click(function (e) {
@@ -49,6 +78,7 @@
                 $.ajax({
                     type: "post",
                     url: "/registration/login",
+                    // the user data 
                     data: {
                         userName: $('#userName').val(),
                         password: $('#password').val()
