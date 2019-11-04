@@ -8,10 +8,6 @@
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/styles.css">
 
-
-
-    <meta name="NetsparkQuiltingResult" total-length="2840" removed="0"
-        rules-found="w3104,w1392,w1397,w1398,w2309,w230,w2674,w4841,w6654,w8528" />
 </head>
 
 <body>
@@ -28,14 +24,13 @@
 
                 <div class="col-md-6 main">
 
-                    <form action="/registration/register">
+                    <form id="myForm">
 
                         <h1> User Registration </h1>
 
-                        <input class="box" type="text" name="name" id="name" placeholder="Name" required /><br>
+                        <input class="box" type="text" name="userName" id="userName" placeholder="Name" required /><br>
 
-                        <input class="box" type="email" name="userName" id="userName" placeholder="E-Mail "
-                            required /><br>
+                        <input class="box" type="email" name="email" id="email" placeholder="E-Mail " required /><br>
 
                         <input class="box" type="password" name="password" id="password" placeholder="Password "
                             required /><br>
@@ -43,7 +38,7 @@
                         <input class="box" type="text" name="phone" id="phone" placeholder="Phone Number "
                             required /><br>
                         <br>
-                        <input type="submit" id="submitDetails" name="submitDetails" value="Submit" /><br>
+                        <input type="submit" id="submitBtn" name="submitBtn" value="Submit" /><br>
 
                     </form>
 
@@ -71,7 +66,9 @@
                     // the user data 
                     data: {
                         userName: $('#userName').val(),
-                        password: $('#password').val()
+                        email: $('#email').val(),
+                        password: $('#password').val(),
+                        phone: $('#phone').val()
                     },
                     complete: // this function will run if the request is successful
                         function (xhr, status) {
