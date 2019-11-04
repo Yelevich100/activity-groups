@@ -1,81 +1,48 @@
-module.exports = {
-    register,
-    login
-}
-let users = [];
-
-function register(req, res) {
-    let user = {
-        userName: req.body.userName,
-        password: req.body.password
-    }
+async function register(req, res) {
+    let users = await db.query("select * from users");
     for (let user of users) {
-        if (user.userName === req.body.userName) {
+        if (user.email === req.body.email) {
 
             return res.status(500).send("user alredy exists")
         }
 
     }
-    users.push(user);
+    await db.query(`insert into users (userName,email,PASSWORD,phone) values("${req.body.userName}","${req.body.email}","${req.body.password}","${req.body.phone}")`);
     res.send("ok");
 }
 
-function login(req, res) {
-    let user = {
-        userName: req.body.userName,
-        password: req.body.password
-    }
+async function login(req, res) {
+    let users = await db.query("select * from users");
+
     for (let user of users) {
-        if ((user.userName === req.body.userName) && (user.password === req.body.password)) {
-            res.send("ok");
-        } else res.status(500).send("error")
+
+        if ((user.userName === req.body.userName || user.email === req.body.userName) && user.PASSWORD === req.body.password) {
+
+            return res.send("ok")
+        }
     }
 
+    res.status(500).send("Incorrect login credentials i.e. userName/email or password!")
 }
 
-// const http = require('http');
-// const fs = require('fs');
-// const url = require('url');
-// const handleFiles = require('./fileHandler.js')
-// const port = 4242;
+const mysql = require('promise-mysql');
+let db;
 
-// let users = [];
+mysql.createPool({
+        connectionLimit: 100,
+        host: process.env.MYSQL_URL,
+        user: process.env.MYSQL_USER,
+        password: process.env.MYSQL_PASSWORD,
+        database: process.env.MYSQL_DB
+    }).then((c) => {
+        db = c;
 
-// const server = http.createServer((req, res) => {
-//     let q = url.parse(req.url, true);
-//     if (q.pathname === '/') {
-//         q.pathname = '/pages/homepage.html'
-//         handleFiles(q, req, res);
-//     } else if (q.pathname === '/user/login') {
-//         res.statusCode = 200;
-//         for (let u of users) {
-//             if (u.userName === q.query.userName && u.password === q.query.password) {
-//                 console.log('goog luck')
-//             }
-//         }
-//         res.end('OK');
-//     } else if (q.pathname === '/user/register') {
-//         let user = {
-//             userName: q.query.userName,
-//             password: q.query.password
-//         }
-//         for (let u of users) {
-//             if (u.userName === q.query.userName) {
-//                 console.log('is exists')
-//             }
-//         }
-//         users.push(user);
-//         console.log(users);
-//         res.statusCode = 200;
-//         res.end('OK');
-//     } else {
-//         handleFiles(q, req, res);
-//     }
+    })
+    .catch((e) => {
+        console.error(e);
+    });
 
-// });
-
-
-
-// server.listen(port, () => {
-//     console.log('Server is running on port ' + port);
-// });
+module.exports = {
+    register,
+    login
+}

@@ -5,7 +5,8 @@
   "main": "server.js",
   "dependencies": {
     "cookie-parser": "^1.4.4",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "promise-mysql": "^4.1.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.4"
