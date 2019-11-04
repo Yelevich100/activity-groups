@@ -11,28 +11,8 @@
 </head>
 
 <body>
-    <!-- <header class="pageHeader">
-        <h2>User Login</h2>
-    </header>
 
-    <form id="myForm">
-        <table>
-            <tr>
-                <td><label for="userName">User Name:</label> </td>
-                <td><input type="text" name="userName" id="userName" size="20" required></td>
-            </tr>
-            <tr>
-                <td><label for="password">Password:</label></td>
-                <td><input type="password" name="password" id="password" size="20" required />
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Login" id="submitBtn" /></td>
-            </tr>
 
-        </table>
-    </form> -->
     <br>
     <br>
     <br>
@@ -45,15 +25,18 @@
 
                 <div class="col-md-6 main">
 
-                    <form action="/registration/login">
+                    <form id="myForm">
 
                         <h1> User Login </h1>
 
-                        <input class="box" type="email" name="userName" id="userName" required /><br>
-
-                        <input class="box" type="password" name="password" id="password" required /><br>
+                        <input class="box" type="text" name="userName" id="userName" placeholder="UserName or E-Mail "
+                            required />
                         <br>
-                        <input type="submit" id="submitDetails" name="submitDetails" value="Submit" /><br>
+
+                        <input class="box" type="password" name="password" id="password" placeholder="Password "
+                            required /><br>
+                        <br>
+                        <input type="submit" id="submitBtn" name="submitBtn" value="Submit" /><br>
 
                     </form>
 
