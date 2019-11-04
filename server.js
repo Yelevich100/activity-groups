@@ -1,8 +1,7 @@
+require("dotenv").config();
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
-
-0
 const port = process.env.PORT || 8080;;
 const registration = require('./registration.js')
 app.use(express.static('public'));
