@@ -1,31 +1,20 @@
- <li>
-     <span>
-         <a href="/<%=topic.topicId%>" target="_blank">
-             <div class="icon" onclick="toggle(<%= topic.categoryId%>)"><%= topic.categoryName%>
-                 <img src="../images/<%= topic.categoryId%>.png" style="width: 100px; height: 100px;">
-             </div>
-             <ul style="display:none" id="topic_<%= topic.categoryId%>" role="menubar">
-                 <% for (let subtopic of subtopics) {%>
-                 <% if (topic.categoryId === subtopic.topicId) {%>
-                 <%- include('subtopic', {subtopic}) %>
+<%- include ../partials/header %>
+<li>
+    <span>
+        <a href="/<%=topic.topicId%>" target="_blank">
+            <div class="icon" onclick="toggle(<%= topic.categoryId%>)"><%= topic.categoryName%>
+                <img src="../images/<%= topic.categoryId%>.png" style="width: 100px; height: 100px;">
+            </div>
+            <ul style="display:none" id="topic_<%= topic.categoryId%>" role="menubar">
+                <% for (let subtopic of subtopics) {%>
+                <% if (topic.categoryId === subtopic.topicId) {%>
+                <%- include('subtopic', {subtopic}) %>
+                <%}%>
                  <%}%>
-                 <%}%>
-             </ul>
+            </ul>
 
-             <em class="arrow"></em>
-             <span><%= topic.categoryName%></span>
-         </a>
-     </span>
- </li>
- <!-- <li>
-     <div onclick="toggle(<%= topic.Id%>)"><%= topic.Name%></div>
-     <ol style="display:none" id="topic_<%= topic.Id%>">
-         <% for (let subtopic of subtopics) {%>
-         <% if (topic.Id === subtopic.TopicId) {%>
-         <%- include('subtopic', {
-                    subtopic
-                }) %>
-         <%}%>
-            <%}%>
-     </ol>
- </li> -->
+            <em class="arrow"></em>
+            <span><%= topic.categoryName%></span>
+        </a>
+    </span>
+</li>

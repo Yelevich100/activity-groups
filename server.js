@@ -4,7 +4,8 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const port = process.env.PORT || 8080;;
 const registration = require('./registration.js')
-app.use(express.static('public'));
+const db = require('./dbActiv.js');
+
 app.use(cookieParser());
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded());
@@ -12,7 +13,7 @@ app.use(express.urlencoded());
 app.use(express.json());
 app.use(express.static('public'));
 
-app.set('view engine', 'ejs');
+
 app.get('/', (req, res) => res.sendFile('./public/pages/home.html', {
     root: __dirname
 }));
@@ -37,10 +38,11 @@ app.post('/registration/login', (req, res) => {
     return registration.login(req, res);
 });
 
+app.set('view engine', 'ejs');
 app.get('/', async (req, res) => {
     let topics = await db.query('select * from category');
     let subtopics = await db.query('select * from activitygroups');
-    res.render('pages/home', {
+    res.render('views/pages/home', {
         topics,
         subtopics
     });
