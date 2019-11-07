@@ -24,7 +24,6 @@ input {
 }
 
 input[type=submit] {
-    /* #submitDetails { */
     font-family: 'Helvetica', serif;
     width: 100%;
     background-color: #767474;

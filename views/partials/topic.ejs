@@ -1,0 +1,18 @@
+<li data-id="<%= topic.categoryId%>" role="menuitem">
+    <span>
+        <a href="/<%=topic.topicId%>" target="_blank">
+            <div class="icon" onclick="toggle(<%= topic.categoryId%>)"><%= topic.categoryName%>
+                <ul style="display:none" id="topic_<%= topic.categoryId%>" role="menubar">
+                    <img src="../images/<%= topic.categoryId%>.png" style="width: 100px; height: 100px;">
+                    <% for (let subtopic of subtopics) {%>
+                    <% if (topic.categoryId === subtopic.topicId) {%>
+                    <%- include('subtopic', {subtopic}) %>
+                    <%}%>
+                    <%}%>
+                </ul>
+            </div>
+            <em class="arrow"></em>
+            <span><%= topic.categoryName%></span>
+        </a>
+    </span>
+</li>

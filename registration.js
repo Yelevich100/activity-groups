@@ -1,6 +1,9 @@
 async function register(req, res) {
+
     let users = await db.query("select * from users");
+
     for (let user of users) {
+
         if (user.email === req.body.email) {
 
             return res.status(500).send("user alredy exists")

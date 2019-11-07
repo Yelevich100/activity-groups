@@ -12,7 +12,7 @@ app.use(express.urlencoded());
 app.use(express.json());
 app.use(express.static('public'));
 
-
+app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.sendFile('./public/pages/home.html', {
     root: __dirname
 }));
@@ -37,4 +37,19 @@ app.post('/registration/login', (req, res) => {
     return registration.login(req, res);
 });
 
+app.get('/', async (req, res) => {
+    let topics = await db.query('select * from category');
+    let subtopics = await db.query('select * from activitygroups');
+    res.render('pages/home', {
+        topics,
+        subtopics
+    });
+})
+
+// app.get('/item/:subtopicid', async (req, res) => {
+//     let items = await db.query('select * from items where SubTopicId = ' + req.params.subtopicid)
+//     res.render('pages/topic', {
+//         items
+//     });
+// })
 app.listen(port, () => console.log('Example app listening on port ' + port));
