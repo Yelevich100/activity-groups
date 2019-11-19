@@ -27,8 +27,17 @@ async function login(req, res) {
 
     res.status(500).send("Incorrect login credentials i.e. userName/email or password!")
 }
+async function query(req, res) {
+    let topics = await db.query('select * from category');
+    let subtopics = await db.query('select * from activitygroups');
+    res.render('./query', {
+        topics,
+        subtopics
+    })
+}
 
 const mysql = require('promise-mysql');
+
 let db;
 
 mysql.createPool({
@@ -47,5 +56,6 @@ mysql.createPool({
 
 module.exports = {
     register,
-    login
+    login,
+    query
 }

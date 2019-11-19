@@ -1,0 +1,33 @@
+   <h3>shalom</h3>
+   <script>
+       let lastOpened = null;
+
+       function show(id) {
+           if (lastOpened != null && lastOpened !== id) {
+               $('#topic_' + lastOpened).hide(1000);
+           }
+           $('#topic_' + id).show();
+           lastOpened = id;
+       }
+   </script>
+   <main role="main">
+       <!-- <nav class="sub_pages clearfix"></nav> -->
+       <ul role="menubar">
+           <%for (let topic of topics) {%>
+
+           <li role="menuitem" id="topic_<%= topic.categoryId%>">
+               <span>
+                   <a href="/<%= topic.categoryId%>" target="_blank">
+                       <div class="icon" onclick="show(<%= topic.categoryId%>)">
+                           <img src="../public/images/<%= topic.categoryId%>.png" style="width: 40px; height: 40px;">
+                       </div>
+                   </a>
+
+                   <!-- <em class="arrow"></em> -->
+                   <span><%= topic.categoryName%></span>
+               </span>
+           </li>
+           <%}%>
+            </ul>
+        </main>
+    

@@ -1,20 +1,19 @@
-<%- include ../partials/header %>
-<li>
+<li role="menuitem">
     <span>
-        <a href="/<%=topic.topicId%>" target="_blank">
-            <div class="icon" onclick="toggle(<%= topic.categoryId%>)"><%= topic.categoryName%>
-                <img src="../images/<%= topic.categoryId%>.png" style="width: 100px; height: 100px;">
+        <a href="/<%=topic.categoryId%>" target="_blank">
+            <div class="icon" onclick="toggle(<%= topic.categoryId%>)">
+                <img src="../../public/images/<%= topic.categoryId%>.png" style="width: 20px; height: 20px;">
             </div>
-            <ul style="display:none" id="topic_<%= topic.categoryId%>" role="menubar">
-                <% for (let subtopic of subtopics) {%>
-                <% if (topic.categoryId === subtopic.topicId) {%>
-                <%- include('subtopic', {subtopic}) %>
-                <%}%>
-                 <%}%>
-            </ul>
-
-            <em class="arrow"></em>
-            <span><%= topic.categoryName%></span>
         </a>
+        <ul style="display:none" id="topic_<%= topic.categoryId%>">
+            <% for (let subtopic of subtopics) {%>
+            <% if (topic.categoryId === subtopic.topicId) {%>
+            <%- include('subtopic', {subtopic}) %>
+            <%}%>
+                 <%}%>
+        </ul>
+
+        <!-- <em class="arrow"></em> -->
+        <span><%= topic.categoryName%></span>
     </span>
 </li>
